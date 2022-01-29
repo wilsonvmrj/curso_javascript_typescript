@@ -1,6 +1,0 @@
-const { resolve } = require('path');
-module exports = {
-  config: resolv(__dirname, 'src','models')
-
-
-};
