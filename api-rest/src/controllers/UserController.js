@@ -70,6 +70,37 @@ class UserController {
 
     }
   }
+
+// ----------------
+
+  async delete(req,res) {    
+    try {
+      const {id} = req.params ;
+      
+      if (!id){
+        return res.status(400).json({
+          errors: ['ID inválido.']
+        });      
+      }
+      const user = await User.findByPk(id);
+      if (!user) {
+        errors: ['Usuário inválido.']
+      }
+
+      user.destroy()
+      return res.json({"sucesso":"Usuario deletedo com sucesso!"});
+    } catch (e){
+      // todo
+      console.log(e);
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message)
+      });
+
+    }
+  }
+
+
+// ----------------
 }
 
 /*
