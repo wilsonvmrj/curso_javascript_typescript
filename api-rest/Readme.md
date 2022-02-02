@@ -1,16 +1,21 @@
-# Comandos 
+# Comandos
 
 ```
-# Docker database 
+# Docker database
 docker run --restart always -d --name bdmariadb1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mariadb
 
-#Criar o banco com o nome de    
+#Criar o banco com o nome de
 
-# Criando as migations 
+# Criando as migations
 npx sequelize migration:create --name=alunos
 
-# Rodando as migrations 
+# Rodando as migrations
 npx squelize db:migrate
+
+
+# Exemplo de alteracao de tabela.
+npx sequelize migration:create --name=mudar-email-aluno-unique
+
 
 
 ```

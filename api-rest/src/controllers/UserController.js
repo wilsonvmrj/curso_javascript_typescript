@@ -28,24 +28,21 @@ class UserController {
     }
   }
   // update
-  async update(req,res) {    
+  async update(req,res) {
     try {
-      const {id} = req.params ;
-      
-      if (!id){
-        return res.status(400).json({
-          errors: ['ID inválido.']
-        });      
-      }
-      const user = await User.findByPk(id);
+
+      const user = await User.findByPk(req.userId)
       if (!user) {
         errors: ['Usuário inválido.']
       }
 
       const novosDados = await user.update(
-        req.body        
+        req.body
       );
-      return res.json(novosDados);
+
+      const {id,nome,email} = novosDados;
+
+      return res.json({id,nome,email});
     } catch (e){
       // todo
       console.log(e);
@@ -56,14 +53,18 @@ class UserController {
     }
   }
 
-  // store  
+  // store
   async store(req,res) {
     console.log(req.body);
     try {
+
       const novoUser = await User.create(
-        req.body       
+        req.body
       );
-      return res.json(novoUser);
+      const {id,nome,email} = novoUser;
+
+      return res.json({id,nome,email});
+
     } catch (e){
       // todo
       console.log(e);
@@ -76,16 +77,11 @@ class UserController {
 
 // ----------------
 
-  async delete(req,res) {    
+  async delete(req,res) {
     try {
-      const {id} = req.params ;
-      
-      if (!id){
-        return res.status(400).json({
-          errors: ['ID inválido.']
-        });      
-      }
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(req.userId)
+
+
       if (!user) {
         errors: ['Usuário inválido.']
       }
@@ -108,11 +104,11 @@ class UserController {
 
 /*
 Metodos de Usuario
-index -> lista todos os usuarios -> GET 
+index -> lista todos os usuarios -> GET
 store ou create -> Cria um novo usuário -> POST
 delete -> apaga um usuario -> DELETE
 show -> mostra um usuário -> GET
-update -> atualiza um usuario -> PATH ou PUT  
+update -> atualiza um usuario -> PATH ou PUT
 
 
 */
