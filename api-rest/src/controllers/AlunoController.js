@@ -26,7 +26,7 @@ class AlunoController {
       });
 
     }
-  
+
   }
 
   async show(req,res) {
@@ -52,7 +52,7 @@ class AlunoController {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       })
-      
+
     }
 
 
@@ -84,12 +84,12 @@ class AlunoController {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       })
-      
+
     }
 
 
   }
-  async delete(req,res) {    
+  async delete(req,res) {
     // TODO: delete
     try{
       const { id } = req.params;
@@ -113,12 +113,8 @@ class AlunoController {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       })
-      
+
     }
-
-    
-
-
   }
 
 }

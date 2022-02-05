@@ -7,12 +7,12 @@ const aleatorio = () => Math.floor(Math.random()* 10000 + 10000)
 
 export default {
     storage: multer.diskStorage({
-        destination: (req, file,callback) =>{
-            callback(null,resolve(__dirname,'..','..','uploads'));
+      destination: (req, file,callback) =>{
+        callback(null,resolve(__dirname,'..','..','uploads'));
         },
         filename: (req,file,callback) => {
-            callback(null, `${Date.now()}${extname(file.originalname)}`)
-        }
-    })
+            callback(null, `${Date.now()}_${aleatorio()}_${extname(file.originalname)}`);
+        },
+    }),
 
 };
