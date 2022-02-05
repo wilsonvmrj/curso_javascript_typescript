@@ -27,7 +27,7 @@ export default class Aluno extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
         validate:{
-          isEmail: {            
+          isEmail: {
             msg: 'E-mail inválido',
           },
         },
@@ -64,6 +64,9 @@ export default class Aluno extends Model {
       sequelize,
     })
     return this;
+  }
+  static associate(models){
+    this.hasMany(models.Foto, {foreignKey: 'aluno_id'});
 
   }
 }
