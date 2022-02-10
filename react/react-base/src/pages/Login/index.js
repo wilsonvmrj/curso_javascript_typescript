@@ -7,12 +7,12 @@ export default function Login() {
     <Container>
       <Title isRed={false}>
         Login
-        <small>Oies</small>
+        <small>Oie</small>
       </Title>
       <Paragrafo>
-        sdf aSDF Asdf asdkjf asldkjf
-
+        Teste para os estudos.
       </Paragrafo>
+      <button type="button">Enviar</button>
 
     </Container>
   );

@@ -9,4 +9,6 @@ background: green;
   }
 `;
 
-export const Paragrafo = styled.p``;
+export const Paragrafo = styled.p`
+  font-size: 80px;
+`;
